@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RocketSeat</title>
+    <style>
+        :root {
+            --text-color: white;
+            --bg-url: url(./assets/bg-mobile.jpg);
+            --stroke-color: rgba(255, 255, 255, 0.5);
+            --surface-color: rgba(255, 255, 255, 0.05);
+            --surface-color-hover: rgba(0, 0, 0, 0.02);
+            --highlight-color: rgba(255, 255, 255, 0.2);
+            --switch-bg-url: url(./assets/moon-stars.svg);
+            --switch-value: 0;
+        }
+        .light {
+            --text-color: black;
+            --bg-url: url(./assets/bg-mobile-light.jpg);
+            --stroke-color: rgba(0, 0, 0, 0.5);
+            --surface-color: rgba(0, 0, 0, 0.05);
+            --surface-color-hover: rgba(0, 0, 0, 0.02);
+            --highlight-color: rgba(0, 0, 0, 0.1);
+            --switch-bg-url: url(./assets/sun.svg);
+            --switch-value: 1;
+        }
+
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            color: var(--text-color);
+        }
+        body {
+            background: var(--bg-url) no-repeat top center/cover;
+            width: 100%;
+            height: 100vh;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        footer {
+            display: flex;
+            justify-content: center;
+        }
+        #me {
+            margin-top: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #image {
+            background-color: white;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100%;
+            color: black;
+        }
+        #name {
+            margin-top: 10px;
+            
+            font-weight: 500;
+        }
+        #switch {
+            position: relative;
+            width: 66px;
+            margin-top: 50px;
+        }
+
+        #switch button {
+            width: 32px;
+            height: 32px;
+            background: white var(--switch-bg-url) no-repeat center;
+            border: 0;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: var(--switch-value);
+            right: 0;
+            z-index: 1;
+            transform: translateY(-50%);
+
+            cursor: pointer;
+            
+        }
+
+        .light #switch button {
+            animation: slide-in 0.2s forwards;
+        }
+
+        #switch button:hover {
+            outline: 8px solid var(--highlight-color);
+        }
+
+        #switch span {
+            display: block;
+            width: 64px;
+            height: 24px;
+            background: var(--surface-color);
+            border: 1px solid var(--stroke-color);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 9999px;
+        }
+        #links {
+            margin-top: 50px;
+            list-style: none;
+        }
+        #links li {
+            width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 16px 24px;
+            background: var(--surface-color);
+            border: 1px solid var(--stroke-color);
+            border-radius: 8px;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s;
+
+            cursor: pointer;
+        }
+        #links a {
+            text-decoration: none;
+            
+        }
+        #links li:hover {
+            background: var(--surface-color-hover);
+            border: 1.5px solid var(--text-color);
+        }
+        #social_links {
+            margin-top: 30px;
+            display: flex;
+        }   
+        #social_links a {
+            padding: 16px;
+            
+            transition: background 0.2s;
+            border-radius: 50%;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #social_links a:hover {
+            background: var(--highlight-color);
+        }
+
+        footer{
+            margin-top: 50px;
+            
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div id="me">
+            <div id="image">
+                Imagem 1
+            </div>
+            <div id="name">
+                <p>@fabricio.lro</p>
+            </div>
+        </div>
+        <div id="switch">
+            <button id="button"></button>
+            <span></span>
+        </div>
+        <ul id="links">
+            <li><a href="">Link1</a></li>
+            <li><a href="">Link2</a></li>
+            <li><a href="">Link3</a></li>
+            <li><a href="">Link4</a></li>
+        </ul>
+        <div id="social_links">
+            <a href="" target="_blank">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+            <a href="" target="_blank">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+            <a href="" target="_blank">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+            <a href="" target="_blank">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </div>
+    </main>
+    <footer>
+        <p>Feito com ♥ por <a href="https://github.com/FabricioLR">FabricioLR</a></p>
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        const button = document.getElementById("button")
+        const image = document.getElementById("image")
+
+        button.addEventListener("click", () => {
+            document.getElementsByTagName("body")[0].classList.toggle("light")
+
+            if (image.innerText == "Imagem 1"){
+                image.innerText = "Imagem 2"
+            } else {
+                image.innerText = "Imagem 1"
+            }
+        })
+    </script>
+</body>
+</html>
